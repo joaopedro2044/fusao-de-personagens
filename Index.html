@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fusão de Personagens</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #101225;
+            color: white;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 35px 15px;
+            background: linear-gradient(135deg, #6929c4, #e83e8c);
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        main {
+            max-width: 850px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+
+        section {
+            background: #1d203b;
+            border: 1px solid #383b60;
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #f5a7ff;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 5px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #777;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 18px;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #e83e8c;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #c92772;
+        }
+
+        .resultado {
+            display: none;
+            text-align: center;
+            background: #292d50;
+            border-radius: 12px;
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .emoji {
+            font-size: 55px;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            background: #101225;
+            color: #b6f7d0;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            background: #080914;
+            padding: 20px;
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>⚡ Fusão de Personagens ⚡</h1>
+    <p>Combine personagens e crie uma nova criatura!</p>
+</header>
+
+<main>
+
+    <section>
+        <h2>🧬 Como funciona?</h2>
+        <p>
+            Neste projeto, você escolhe dois personagens e combina
+            suas características para criar um personagem totalmente novo.
+        </p>
+        <p>
+            A atividade usa listas para guardar os personagens e recursão
+            para percorrer uma lista de características.
+        </p>
+    </section>
+
+    <section>
+        <h2>🎮 Criador de fusões</h2>
+
+        <label for="personagem1">Escolha o primeiro personagem:</label>
+        <select id="personagem1">
+            <option value="fogo">🔥 Dragão de Fogo</option>
+            <option value="gelo">❄️ Guerreiro do Gelo</option>
+            <option value="raio">⚡ Ninja do Raio</option>
+            <option value="natureza">🌿 Guardião da Natureza</option>
+        </select>
+
+        <label for="personagem2">Escolha o segundo personagem:</label>
+        <select id="personagem2">
+            <option value="raio">⚡ Ninja do Raio</option>
+            <option value="fogo">🔥 Dragão de Fogo</option>
+            <option value="natureza">🌿 Guardião da Natureza</option>
+            <option value="gelo">❄️ Guerreiro do Gelo</option>
+        </select>
+
+        <button onclick="criarFusao()">Criar fusão!</button>
+
+        <div class="resultado" id="resultado" aria-live="polite">
+            <div class="emoji" id="emoji"></div>
+            <h2 id="nomeFusao"></h2>
+            <p id="descricao"></p>
+            <p><strong>Poderes:</strong></p>
+            <ul id="poderes"></ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>📚 O que são listas?</h2>
+        <p>
+            Uma lista permite guardar vários elementos em uma única
+            variável. Em Python, podemos criar uma lista usando colchetes.
+        </p>
+
+        <pre>
+personagens = ["Dragão", "Ninja", "Guerreiro"]
+
+print(personagens[0])
+        </pre>
+
+        <p>
+            O resultado será "Dragão". Em Python, a contagem dos índices
+            começa pelo zero.
+        </p>
+    </section>
+
+    <section>
+        <h2>🔄 O que é recursão?</h2>
+        <p>
+            Recursão acontece quando uma função chama a si mesma para
+            resolver uma parte de um problema. É importante ter uma
+            condição de parada para evitar chamadas infinitas.
+        </p>
+
+        <pre>
+def contar_lista(lista, indice=0):
+    if indice >= len(lista):
+        return
+
+    print(lista[indice])
+    contar_lista(lista, indice + 1)
+
+personagens = ["Dragão", "Ninja", "Guerreiro"]
+contar_lista(personagens)
+        </pre>
+
+        <p>
+            Nesse exemplo, a função mostra cada elemento da lista.
+            Ela termina quando o índice chega ao final.
+        </p>
+    </section>
+
+    <section>
+        <h2>🧠 Como o projeto funciona?</h2>
+        <ol>
+            <li>As opções de personagens ficam organizadas em listas.</li>
+            <li>O usuário escolhe dois personagens.</li>
+            <li>O programa identifica os personagens escolhidos.</li>
+            <li>Uma nova criatura é criada com poderes combinados.</li>
+        </ol>
+        <p>
+            O site usa JavaScript para tornar a fusão interativa.
+            Os exemplos de listas e recursão são escritos em Python
+            para demonstrar os conceitos estudados na atividade.
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    <p>Projeto educativo — Lista e Recursão 🐍</p>
+    <p>Use a lógica, imagine e crie!</p>
+</footer>
+
+<script>
+    const personagens = {
+        fogo: {
+            nome: "Dragão de Fogo",
+            emoji: "🔥",
+            poderes: ["Chamas poderosas", "Resistência ao calor"]
+        },
+
+        gelo: {
+            nome: "Guerreiro do Gelo",
+            emoji: "❄️",
+            poderes: ["Controle do gelo", "Escudo congelante"]
+        },
+
+        raio: {
+            nome: "Ninja do Raio",
+            emoji: "⚡",
+            poderes: ["Velocidade elétrica", "Ataque relâmpago"]
+        },
+
+        natureza: {
+            nome: "Guardião da Natureza",
+            emoji: "🌿",
+            poderes: ["Controle das plantas", "Cura natural"]
+        }
+    };
+
+    function criarFusao() {
+        const tipo1 = document.getElementById("personagem1").value;
+        const tipo2 = document.getElementById("personagem2").value;
+
+        const p1 = personagens[tipo1];
+        const p2 = personagens[tipo2];
+
+        const resultado = document.getElementById("resultado");
+        const nome = document.getElementById("nomeFusao");
+        const emoji = document.getElementById("emoji");
+        const descricao = document.getElementById("descricao");
+        const listaPoderes = document.getElementById("poderes");
+
+        nome.textContent = p1.nome + " + " + p2.nome;
+
+        emoji.textContent = p1.emoji + "✨" + p2.emoji;
+
+        descricao.textContent =
+            "Uma fusão especial que combina as habilidades de " +
+            p1.nome + " e " + p2.nome + "!";
+
+        listaPoderes.replaceChildren();
+
+        const poderesCombinados = [...p1.poderes, ...p2.poderes];
+
+        poderesCombinados.forEach(function(poder) {
+            const item = document.createElement("li");
+            item.textContent = poder;
+            listaPoderes.appendChild(item);
+        });
+
+        resultado.style.display = "block";
+    }
+</script>
+
+</body>
+</html>
